@@ -7,12 +7,18 @@ var appRoot = document.getElementById('app');
 const app = {
     Title: "Indecision app",
     SubTitle: "Put something Here",
-    Options: ["Uno","Dos"]
+    Options: ["Saludos","Mundo","Segundo"]
 }
 
 const reset = () => {
     app.Options.pop();
     renderizado();
+}
+
+const makeADecision =() => {
+    const num = Math.floor(Math.random() * app.Options.length)
+    const option = app.Options[num];
+    alert(option);
 }
 
 const onFormSubmit = (e) => {
@@ -35,14 +41,18 @@ const renderizado = () => {
         <p>This is some info</p>
         <p>{app.Options.length}</p>
         <ol>
-        <li>Item One</li>
-        <li>Item Two</li>
+        {app.Options.map((number,i) => <div key={i}>
+            <li>{number}</li>
+            </div>
+        )}
         </ol>
         <form onSubmit={onFormSubmit}>
         <input type="text" name="option"/>
         <button>Add Option</button>
         <br/>
         <button onClick={reset}>Reset Options</button>
+        <br/>
+        <button onClick={makeADecision}>What do I choose?</button>
         </form>
         </div>
         );

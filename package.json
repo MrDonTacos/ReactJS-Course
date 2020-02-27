@@ -4,7 +4,8 @@
   "description": "Curso de ReactJS",
   "main": "index.js",
   "scripts": {
-    "build": "babel src/app.js --out-file=public/scripts/app.js --watch"
+    "build": "babel src/app.js --out-file=public/scripts/app.js --watch",
+    "build:file": "babel --out-file=public/scripts/app.js --watch"
   },
   "author": "Saul Cañedo Castillo",
   "license": "MIT",
