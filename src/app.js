@@ -1,68 +1,95 @@
-//Create app object title/subtitle
-//use title/subtyitle in the template
-//render the template
-
-var appRoot = document.getElementById('app');
-
-const app = {
-    Title: "Indecision app",
-    SubTitle: "Put something Here",
-    Options: ["Saludos","Mundo","Segundo"]
-}
-
-const reset = () => {
-    app.Options.pop();
-    renderizado();
-}
-
-const makeADecision =() => {
-    const num = Math.floor(Math.random() * app.Options.length)
-    const option = app.Options[num];
-    alert(option);
-}
-
-const onFormSubmit = (e) => {
-    e.preventDefault();
-    const option = e.target.option.value;
-    console.log(option);
-    if(option){
-        app.Options.push(option);
-        e.target.elements.option.value = ''
-        renderizado();
-    }
-    
-}
+let num=0;
+let option = ['Option one', 'Option two', 'Option Three'];
 
 
-const renderizado = () => {
-    const template = (
-        <div>
-        <h1>Saúl Cañedo Castillo</h1> 
-        <p>This is some info</p>
-        <p>{app.Options.length}</p>
-        <ol>
-        {app.Options.map((number,i) => <div key={i}>
-            <li>{number}</li>
+class Header extends React.Component{
+    render(){
+        const props = this.props;
+        return (
+            <div>
+            <h1>Title: {props.title}</h1>
+            <h2>Subtitle: {props.subtitle}</h2>
             </div>
-        )}
-        </ol>
-        <form onSubmit={onFormSubmit}>
-        <input type="text" name="option"/>
-        <button>Add Option</button>
-        <br/>
-        <button onClick={reset}>Reset Options</button>
-        <br/>
-        <button onClick={makeADecision}>What do I choose?</button>
-        </form>
-        </div>
         );
-        ReactDOM.render(template, appRoot)
-    } 
+    }
+}
+
+const renderizar = () => {
+
+    class IndecisionApp extends React.Component {
+        render () {
+            return (
+                <div>
+                <Header title={num} subtitle={num-1}/>
+                <Option />
+                <Action />
+                <AddOption />
+                <Sumar />
+                </div>
+                );
+            }
+            
+        }
+        ReactDOM.render(<IndecisionApp/>, document.getElementById("app"))
+    }
+
+class Action extends React.Component {
+    render() {
+        return (
+            <div>
+            <button>What should I Do</button>
+            </div>
+        );
+    }
+}
+
+class AddOption extends React.Component {
+    render (){
+        return (
+            <p>Your choose</p>
+        );
+    }
+}
+
+class Option extends React.Component {
+    render(){
+        return (
+            <div>
+            Option component here:
+            
+            <Options objeto={option}/>
+            </div>
+        )
+    }
+}
+
+class Options extends React.Component {
+    
+    render() {
+        const props = this.props;
+        return (
+            <ol>
+                {props.objeto.map((texto, i)=> <li key={i}>{texto}</li>)}
+            </ol>
+        );
+    }
+}
 
 
-renderizado();
+
+const sumar = () =>{
+    num ++;
+    renderizar();
+}
+
+class Sumar extends React.Component{
+    render(){
+        return(
+            <button onClick={sumar}>Sumar</button>
+        );
+    }
+}
 
 
-
-
-
+renderizar();
+//React.Component really important
