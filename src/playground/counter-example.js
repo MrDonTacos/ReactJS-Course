@@ -6,7 +6,7 @@ class Contador extends React.Component {
         this.handleMinusOne = this.handleMinusOne.bind(this)
         this.handleReset = this.handleReset.bind(this)
         this.state = {
-            counter: 0,
+            counter: props.counter,
             name: 'Saul Cañedo Castillo'
         }
     }
@@ -52,4 +52,8 @@ class Contador extends React.Component {
     }
 }
 
-ReactDOM.render(<Contador/>, document.getElementById("app"))
+Contador.defaultProps = {
+    counter: 0
+}
+
+ReactDOM.render(<Contador counter={50}/>, document.getElementById("app"))
