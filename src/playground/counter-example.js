@@ -6,9 +6,32 @@ class Contador extends React.Component {
         this.handleMinusOne = this.handleMinusOne.bind(this)
         this.handleReset = this.handleReset.bind(this)
         this.state = {
-            counter: props.counter,
+            counter: 0,
             name: 'Saul Cañedo Castillo'
         }
+        console.log(this.state);
+    }
+
+    componentDidMount(){
+            const count = localStorage.getItem('num');
+            if(!isNaN(localStorage.getItem('num'))){
+            this.setState(()=> ({counter: parseInt(count, 10)}))
+        }
+        else{
+
+        }
+    }
+
+    componentDidUpdate(prevProp,prevState){
+        if(prevState.counter !== this.state.counter)
+        localStorage.setItem('num', this.state.counter)
+        else{
+
+        }
+            }
+
+    componentWillUnmount(){
+
     }
 
     handleAddOne() {
@@ -18,7 +41,7 @@ class Contador extends React.Component {
                 counter: prevState.counter +1 //Doesn't affect other properties
             }
         });
-        console.log(this.state.counter);
+     
     }
 
     handleMinusOne() {
@@ -52,8 +75,6 @@ class Contador extends React.Component {
     }
 }
 
-Contador.defaultProps = {
-    counter: 0
-}
 
-ReactDOM.render(<Contador counter={50}/>, document.getElementById("app"))
+
+ReactDOM.render(<Contador/>, document.getElementById("app"))
