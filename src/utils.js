@@ -1,4 +1,3 @@
-console.log('utils.js running');
 
 const helloWorld = () => {
     console.log("I'm an arrow function");
