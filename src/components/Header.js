@@ -1,13 +1,10 @@
 import React from 'react'
 
-const Header = (props) =>{
-    return (
-        <div>
+const Header = (props) =>
+        (<div>
         <h1>Title: {props.title}</h1>
        {props.subtitle&& <h2>Subtitle: {props.subtitle}</h2>}
-        </div>
-    );
-}
+        </div>)
 
 Header.defaultProps= {
     title: 'Indecision',
