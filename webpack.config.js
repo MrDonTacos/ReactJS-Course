@@ -13,7 +13,7 @@ module.exports = {
             test: /\.(js|jsx)$/,
             exclude: /node_modules/
         },{
-            test: /\.scss$/,
+            test: /\.(css|scss)$/,
             use:['style-loader','css-loader', 'sass-loader']
         }
     ]

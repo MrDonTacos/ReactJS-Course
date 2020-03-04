@@ -1,13 +1,18 @@
-//rem
-html{
-    font-size: 62.5;
-}
-
-body{
+html {
+    font-size: 62.5%;
+  }
+  
+  body {
+    background: $dark-blue;
     font-family: Helvetica, Arial, sans-serif;
-    font-size: 1.6rem;
-}
-
-h1 {
-    font-size: 1.8rem;
-}
+    font-size: $m-size;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    cursor: default;
+  }
+  
